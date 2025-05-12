@@ -1,17 +1,18 @@
 "use client";
 
 import { useOrganization } from "./organization-context";
+import { TeamCard } from "./team-card";
 
 export function TeamList() {
   // Data from Layer 2 context
   const { teams, isLoadingTeams, error } = useOrganization();
 
   if (error || !teams) {
-    return <ErrorState message="Failed to load teams" />;
+    return null;
   }
 
   if (isLoadingTeams) {
-    return <LoadingState />;
+    return null;
   }
 
   return (

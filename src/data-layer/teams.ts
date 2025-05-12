@@ -1,13 +1,18 @@
 "server only";
 import prisma from "@/lib/prisma-client";
+import { getTeamsDataSelect } from "@/lib/types";
 import { TeamValues } from "@/lib/validations";
 
-export function getTeams() {
-  return prisma.team.findMany();
+export function getTeamsWithUsers() {
+  return prisma.team.findMany({
+    select: getTeamsDataSelect(),
+  });
 }
+
 export function getTeamById(id: number) {
   return prisma.team.findUnique({
     where: { id },
+    select: getTeamsDataSelect(),
   });
 }
 

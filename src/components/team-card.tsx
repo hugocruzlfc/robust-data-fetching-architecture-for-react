@@ -1,12 +1,12 @@
 "use client";
+
+import { useTeamMutations } from "@/hooks/use-team-mutations";
+import { TeamsData } from "@/lib/types";
+
 // TeamList.tsx - Using Layer 3 mutations
 
 interface TeamCardProps {
-  team: {
-    id: string;
-    name: string;
-    members: string[];
-  };
+  team: TeamsData;
 }
 
 export function TeamCard({ team }: TeamCardProps) {
@@ -17,7 +17,7 @@ export function TeamCard({ team }: TeamCardProps) {
       <h3 className="text-lg font-semibold">{team.name}</h3>
       <p className="text-gray-600">Members: {team.members.length}</p>
       <button
-        onClick={() => deleteTeam(team.id)}
+        onClick={() => deleteTeam(Number(team.id))}
         disabled={isDeleting}
         className="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 disabled:opacity-50"
       >

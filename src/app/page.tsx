@@ -1,4 +1,5 @@
 import { OrganizationProvider } from "@/components/organization-context";
+import { TeamList } from "@/components/team-list";
 
 export default function Home() {
   return (

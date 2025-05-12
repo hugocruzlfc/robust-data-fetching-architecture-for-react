@@ -1,12 +1,7 @@
+"use client";
 import { useTeamsData } from "@/hooks/use-team-data";
-import { Team } from "@/lib/generated/prisma";
+import { OrganizationContextValue } from "@/lib/types";
 import { createContext, use } from "react";
-
-interface OrganizationContextValue {
-  teams: Team[] | undefined;
-  isLoadingTeams: boolean;
-  error: Error | null;
-}
 
 const OrganizationContext = createContext<OrganizationContextValue | null>(
   null
