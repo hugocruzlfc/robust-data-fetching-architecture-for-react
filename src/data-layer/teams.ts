@@ -1,4 +1,4 @@
-"server only";
+"server-only";
 import prisma from "@/lib/prisma-client";
 import { getTeamsDataSelect } from "@/lib/types";
 import { TeamValues } from "@/lib/validations";

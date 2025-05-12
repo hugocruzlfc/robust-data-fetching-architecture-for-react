@@ -1,3 +1,4 @@
+"server-only";
 import prisma from "@/lib/prisma-client";
 import { getUserDataSelect } from "@/lib/types";
 

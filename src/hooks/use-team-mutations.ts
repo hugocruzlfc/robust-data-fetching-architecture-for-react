@@ -1,4 +1,5 @@
 // Layer 3: Mutations with optimism
+import { deleteTeamAction } from "@/actions/delete-team";
 import { createTeam, deleteTeam } from "@/data-layer/teams";
 import { Team } from "@/lib/generated/prisma";
 import { QueryKey, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -31,7 +32,7 @@ export function useTeamMutations() {
   });
 
   const deleteTeamMutation = useMutation({
-    mutationFn: deleteTeam,
+    mutationFn: deleteTeamAction,
     onMutate: async (teamId) => {
       await queryClient.cancelQueries({ queryKey });
 

@@ -17,6 +17,8 @@ Back to the three layers. The architecture is simple:
 ### File Structure
 
 ```plaintext
+actions/
+├── delete-team.ts # Layer 3: Create team action
 app/
 ├── page.tsx # Layer 1: Server Component entry
 ├── api/
