@@ -2,6 +2,16 @@
 
 import { useTeamMutations } from "@/hooks/use-team-mutations";
 import { TeamsData } from "@/lib/types";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
+import { Badge } from "./ui/badge";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 // TeamList.tsx - Using Layer 3 mutations
 
@@ -13,16 +23,32 @@ export function TeamCard({ team }: TeamCardProps) {
   const { deleteTeam, isDeleting } = useTeamMutations();
 
   return (
-    <div className="p-4 border border-gray-200 rounded-lg mb-4">
-      <h3 className="text-lg font-semibold">{team.name}</h3>
-      <p className="text-gray-600">Members: {team.members.length}</p>
-      <button
-        onClick={() => deleteTeam(Number(team.id))}
-        disabled={isDeleting}
-        className="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 disabled:opacity-50"
-      >
-        {isDeleting ? "Deleting..." : "Delete Team"}
-      </button>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>{team.name}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>Members: {team.members.length}</p>
+        <div className="space-x-2">
+          {team.members.map((member) => (
+            <Link
+              key={member.id}
+              href={`/members/${member.id}`}
+            >
+              <Badge>{member.name}</Badge>
+            </Link>
+          ))}
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button
+          variant="destructive"
+          onClick={() => deleteTeam(Number(team.id))}
+          disabled={isDeleting}
+        >
+          {isDeleting ? "Deleting..." : "Delete Team"}
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

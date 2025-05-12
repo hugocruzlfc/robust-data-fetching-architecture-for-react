@@ -8,15 +8,15 @@ export function TeamList() {
   const { teams, isLoadingTeams, error } = useOrganization();
 
   if (error || !teams) {
-    return null;
+    return null; // add error handling here
   }
 
   if (isLoadingTeams) {
-    return null;
+    return null; // add loading skeleton here
   }
 
   return (
-    <div>
+    <div className="grid grid-cols-1  md:grid-cols-3 gap-4">
       {teams.map((team) => (
         <TeamCard
           key={team.id}

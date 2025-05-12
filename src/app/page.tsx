@@ -3,11 +3,11 @@ import { TeamList } from "@/components/team-list";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Teams Dashboard</h1>
+    <div className="space-y-5">
+      <h1 className="text-2xl font-bold">Teams Dashboard</h1>
       <OrganizationProvider>
         <TeamList />
       </OrganizationProvider>
-    </main>
+    </div>
   );
 }
