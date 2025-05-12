@@ -24,3 +24,22 @@ export interface OrganizationContextValue {
   isLoadingTeams: boolean;
   error: Error | null;
 }
+
+export function getUserDataSelect() {
+  return {
+    id: true,
+    name: true,
+    email: true,
+    team: {
+      select: {
+        id: true,
+        name: true,
+        description: true,
+      },
+    },
+  } satisfies Prisma.UserSelect;
+}
+
+export type UserData = Prisma.UserGetPayload<{
+  select: ReturnType<typeof getUserDataSelect>;
+}>;

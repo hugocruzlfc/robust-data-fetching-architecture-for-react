@@ -37,13 +37,15 @@ hooks/
 │ └── use-team-mutations.ts # Layer 3: Mutations with optimism
 
 data-layer/ # Layer 1: Server-side database queries
-├── teams/
-│ ├── getTeamsWithUsers.ts
-│ ├── getTeamById.ts
-│ ├── createTeam.ts
-│ ├── deleteTeamById.ts
-│ ├── createTeam.ts
-│ ├── updateTeamById.ts
+├── teams.ts/
+│ ├── getTeamsWithUsers
+│ ├── createTeam
+│ ├── deleteTeamById
+│ ├── createTeam
+│ ├── updateTeamById
+│ └── updateTeam
+└── users.ts/
+├── getUserById
 
 context/
 └── OrganizationContext.tsx # Layer 2: Centralized data management
